@@ -117,7 +117,11 @@ create_logout_response = (issuer, in_response_to, destination, status='urn:oasis
         '@Version': '2.0'
         '@xmlns:samlp': XMLNS.SAMLP
         '@xmlns:saml': XMLNS.SAML
-        'saml:Issuer': issuer
+        'saml:Issuer': {
+          '@Format': "urn:oasis:names:tc:SAML:2.0:nameid-format:entity",
+          '@NameQualifier': issuer,
+          '#text': issuer
+        }
         'samlp:Status':
           'samlp:StatusCode': '@Value': status
     }, { headless: true }
